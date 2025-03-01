@@ -23,19 +23,13 @@ const space = new Space(container);
 
 // Create a new area within the space
 const createNewArea = () => {
-  const area = space.createArea();
-  
-  // Configure event listeners for the area...
-  setupAreaListeners(area);
-  
-  return area;
+
+// the following will create a resizable area inside container 
+const area = space.createArea();
+
 };
 
-// Add a button to create new areas
-const button = document.querySelector('#newDiv');
-button.addEventListener('click', () => {
-  createNewArea();
-});
+
 ```
 
 
@@ -59,59 +53,57 @@ Areas emit various events that you can listen to for interaction. Here's a compl
 ## Example
 
 ```typescript
-// Function to set up all available listeners on an area
-function setupAreaListeners(area) {
-  // Selection events
-  area.on('select', e => {
-    const selectedArea = e.target as Area;
-    const resizableEl = selectedArea.getResizable();
-    resizableEl.style.backgroundColor = 'blue';
-    console.log('Area selected:', selectedArea);
-  });
-  
-  area.on('deselect', e => {
-    const deselectedArea = e.target as Area;
-    const resizableEl = deselectedArea.getResizable();
-    resizableEl.style.backgroundColor = 'red';
-    console.log('Area deselected:', deselectedArea);
-  });
-  
-  // Deletion events
-  area.on('before-delete', () => {
-    console.log('Before area deletion');
-    // You can perform cleanup operations or ask for confirmation
-  });
-  
-  area.on('after-delete', () => {
-    console.log('Area successfully deleted');
-    // Update UI or perform other post-deletion actions
-  });
-  
-  // Resize events
-  area.on('resize-start', (e) => {
-    console.log('Resize started', e);
-    // e.target contains the area, e.detail may contain resize information
-  });
-  
-  area.on('resize', (e) => {
-    console.log('During resize', e);
-    // Called continuously during resizing
-  });
-  
-  area.on('resize-end', (e) => {
-    console.log('Resize ended', e);
-    // Called once when resizing is complete
-  });
-  
-  // Movement events
-  area.on('move', (e) => {
-    console.log('Area moving', e);
-    // Called during area movement
-  });
-}
+// example on how to setup all available listeners
+
+// Selection events
+area.on('select', e => {
+  const selectedArea = e.target as Area;
+  const resizableEl = selectedArea.getResizable();
+  resizableEl.style.backgroundColor = 'blue';
+  console.log('Area selected:', selectedArea);
+});
+
+area.on('deselect', e => {
+  const deselectedArea = e.target as Area;
+  const resizableEl = deselectedArea.getResizable();
+  resizableEl.style.backgroundColor = 'red';
+  console.log('Area deselected:', deselectedArea);
+});
+
+// Deletion events
+area.on('before-delete', () => {
+  console.log('Before area deletion');
+  // You can perform cleanup operations or ask for confirmation
+});
+
+area.on('after-delete', () => {
+  console.log('Area successfully deleted');
+  // Update UI or perform other post-deletion actions
+});
+
+// Resize events
+area.on('resize-start', (e) => {
+  console.log('Resize started', e);
+  // e.target contains the area, e.detail may contain resize information
+});
+
+area.on('resize', (e) => {
+  console.log('During resize', e);
+  // Called continuously during resizing
+});
+
+area.on('resize-end', (e) => {
+  console.log('Resize ended', e);
+  // Called once when resizing is complete
+});
+
+// Movement events
+area.on('move', (e) => {
+  console.log('Area moving', e);
+  // Called during area movement
+});
+
 ```
-
-
 
 ## Main Methods
 
