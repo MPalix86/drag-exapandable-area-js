@@ -22,12 +22,9 @@ const container = document.querySelector('#mainDiv');
 const space = new Space(container);
 
 // Create a new area within the space
-const createNewArea = () => {
-
-// the following will create a resizable area inside container 
 const area = space.createArea();
 
-};
+}
 
 
 ```
