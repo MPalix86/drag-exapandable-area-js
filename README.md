@@ -1,4 +1,6 @@
-# Elastic-Box
+# Elastic-Box (ALPHA)
+
+
 
 Elastic-Box is a JavaScript/TypeScript library for creating dynamic layouts with resizable and movable areas inside a container.
 
